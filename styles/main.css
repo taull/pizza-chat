@@ -7,11 +7,11 @@
 
 .msg-container {
   margin: 25px auto;
-  background: #f0f0f0;
   width: 960px;
   height: 400px;
   overflow: scroll;
-  border-radius: 5px; }
+  border: 1px solid #000;
+  padding: 15px; }
 
 .msg-list {
   padding-left: 0;
@@ -21,6 +21,9 @@
   border-bottom: 1px solid #dfdfdf;
   min-height: 50px;
   list-style: none; }
+
+.msg-holder ul {
+  padding-left: 15px; }
 
 .msg-holder ul li {
   list-style: none; }
