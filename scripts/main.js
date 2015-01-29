@@ -12,7 +12,12 @@ $(document).ready(function() {
 
   $.ajax(pizzaUrl).done(function(data) {
     _.each(data, function(info) {
-      if(info.username && info.time && info.message) {
+      // _.defaults(info, {
+      //   username: "",
+      //   createdAt: (new Date()).toString(),
+      //   message: ""
+      // });
+      if(info.username && info.createdAt && info.message) {
         $userInfoOutput.append(renderChatTemplate(info));
       }
     console.log(info);
