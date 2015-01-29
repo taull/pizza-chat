@@ -24,6 +24,15 @@ $(document).ready(function() {
     });
   });
 
+  $.ajax({
+    url: "http://tiny-pizza-server.herokuapp.com/collections/greenville-chats",
+    type: "POST",
+    data: {
+      message: "Time for bed",
+      username: "Dad",
+      createdAt: (new Date()).toString()
+    }
+  });
 
   });
 })();
