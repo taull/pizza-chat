@@ -2,12 +2,42 @@
   box-sizing: border-box;
 }
 
-
 .msg-container {
-  width:960px;
-  margin:0 auto;
+  margin: 25px auto;
+  background: #f0f0f0;
+  width: 960px;
+  height:400px;
+  overflow: scroll;
+  border-radius:5px;
 }
 
 .msg-list {
+  padding-left:0;
+  margin-left:0;
+}
 
+.msg-holder {
+  border-bottom: 1px solid #dfdfdf;
+  min-height:50px;
+  list-style:none;
+
+}
+
+.msg-holder ul li {
+  list-style:none;
+}
+
+li.name {
+  display:inline-block;
+  width:150px;
+}
+
+li.msg {
+  display:inline-block;
+  width:500px;
+}
+
+li.date {
+  display:inline-block;
+  width:200px;
 }
