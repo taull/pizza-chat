@@ -6,8 +6,17 @@ console.log("hello");
 
 $(document).ready(function() {
 
+  var $userInfoOutput = $('.msg-list');
+
+  var renderChatTemplate = _.template($('.chat-items').text());
+
   $.ajax(pizzaUrl).done(function(data) {
-    console.log(data);
+    _.each(data, function(info) {
+      if(info.username && info.time && info.message) {
+        $userInfoOutput.append(renderChatTemplate(info));
+      }
+    console.log(info);
+    });
   });
 
 

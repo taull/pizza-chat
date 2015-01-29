@@ -7,7 +7,25 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+
+  <div class="msg-container">
+    <ul class="msg-list"></ul>
+  </div>
+
+  <script type="text/template" class="chat-items">
+
+    <li class="msg-holder">
+      <ul>
+       <li class="name"><%= username %></li>
+       <li class="msg"><%= message %></li>
+      </ul>
+    </li>
+
+  </script>
+
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
 <script type="text/javascript" src="scripts/main.js"></script>
+
 </body>
 </html>
