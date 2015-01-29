@@ -36,7 +36,11 @@ $(document).ready(function() {
 
 
 
-
+  $('#loginButton').on('click', function(){
+    $('.msg-container').removeClass('hidden');
+    $('.login-container').addClass('hidden');
+    // $(this).addClass('current');
+  });
 
 
 
