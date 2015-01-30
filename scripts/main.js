@@ -5,6 +5,7 @@ var pizzaUrl ="http://tiny-pizza-server.herokuapp.com/collections/greenville-cha
 console.log("hello");
 
 var usernameInput = "";
+var messageInput = "";
 
 $(document).ready(function() {
 
@@ -27,6 +28,27 @@ $(document).ready(function() {
 
   });
 
+
+  $('#msgButton').on('click', function(){
+    event.preventDefault();
+    if($("#msg-textbox").val() === ''){
+      alert("Enter a message");
+    } else {
+      messageInput = $("#msg-textbox").val();
+      console.log(messageInput);
+      $.ajax({
+        url: "http://tiny-pizza-server.herokuapp.com/collections/greenville-chats",
+        type: "POST",
+        data: {
+          message: messageInput,
+          username: usernameInput,
+          createdAt: (new Date()).toString()
+        }
+      });
+    }
+  });
+
+
   $.ajax(pizzaUrl).done(function(data) {
     _.each(data, function(info) {
       // _.defaults(info, {
@@ -41,15 +63,7 @@ $(document).ready(function() {
     });
   });
 
-  $.ajax({
-    url: "http://tiny-pizza-server.herokuapp.com/collections/greenville-chats",
-    type: "POST",
-    data: {
-      message: "Making bacon waffles",
-      username: usernameInput,
-      createdAt: (new Date()).toString()
-    }
-  });
+
   console.log(data);
   });
 })();
