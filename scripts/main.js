@@ -6,15 +6,14 @@ console.log("hello");
 
 var usernameInput = "";
 var messageInput = "";
-var currentDateTime = "54cc031945c37503000001ef";
+var currentDateTime = "";
 
 $(document).ready(function() {
 
-  currentDateTime = Date.now();
+currentDateTime = Date.now();
 
-  var $userInfoOutput = $('.msg-list');
-
-  var renderChatTemplate = _.template($('.chat-items').text());
+var $userInfoOutput = $('.msg-list');
+var renderChatTemplate = _.template($('.chat-items').text());
 
   $('#loginButton').on('click', function(){
     event.preventDefault();
@@ -25,6 +24,7 @@ $(document).ready(function() {
       console.log(usernameInput);
       $('.username-filler').text(usernameInput);
       $('.msg-container').removeClass('hidden');
+      $('.msg-container').scrollTop($('.msg-container')[0].scrollHeight);
       $('.msg-input-container').removeClass('hidden');
       $('.login-container').addClass('hidden');
     }
@@ -59,6 +59,7 @@ function msgFilter(chatData) {
   currentDateTime = Date.now();
   _.each(filteredData, function(info) {
       $userInfoOutput.append(renderChatTemplate(info));
+      $('.msg-container').scrollTop($('.msg-container')[0].scrollHeight);
     }
 );
 
