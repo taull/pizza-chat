@@ -6,8 +6,11 @@ console.log("hello");
 
 var usernameInput = "";
 var messageInput = "";
+var currentDateTime = "";
 
 $(document).ready(function() {
+
+  currentDateTime = Date.now();
 
   var $userInfoOutput = $('.msg-list');
 
@@ -29,23 +32,37 @@ $(document).ready(function() {
   });
 
 
-  var interval = setInterval(function(){
+  // var interval = setInterval(function(){
     $($userInfoOutput).empty();
     $.ajax(pizzaUrl).done(function(data) {
+      _.sortBy(data, "_id");
       _.each(data, function(info) {
-        // _.defaults(info, {
-        //   username: "",
-        //   createdAt: (new Date()).toString(),
-        //   message: ""
-        // });
         if(info.username && info.createdAt && info.message) {
           $userInfoOutput.append(renderChatTemplate(info));
         }
-      console.log(info);
       });
     });
-  }, 3000);
-  
+  // }, 3000);
+
+
+function getMsg() {
+  $.ajax(pizzaUrl).done(msgFilter);
+}
+
+function msgFilter(chatData) {
+  var filteredData = _.filter(chatData, function(chat){
+    return chat.createdAt >= currentDateTime;
+  });
+  console.log(filteredData);
+  currentDateTime = Date.now();
+  _.each(filteredData, function(info) {
+      $userInfoOutput.append(renderChatTemplate(info));
+    }
+);
+
+}
+
+setInterval(getMsg, 5000);
 
   $('#msgButton').on('click', function(){
     event.preventDefault();
@@ -60,14 +77,11 @@ $(document).ready(function() {
         data: {
           message: messageInput,
           username: usernameInput,
-          createdAt: (new Date()).toString()
+          createdAt: Date.now()
         }
       });
     }
     $('#msg-textbox').val('');
   });
-
-
-  console.log(data);
   });
 })();
