@@ -29,6 +29,24 @@ $(document).ready(function() {
   });
 
 
+  var interval = setInterval(function(){
+    $($userInfoOutput).empty();
+    $.ajax(pizzaUrl).done(function(data) {
+      _.each(data, function(info) {
+        // _.defaults(info, {
+        //   username: "",
+        //   createdAt: (new Date()).toString(),
+        //   message: ""
+        // });
+        if(info.username && info.createdAt && info.message) {
+          $userInfoOutput.append(renderChatTemplate(info));
+        }
+      console.log(info);
+      });
+    });
+  }, 3000);
+
+
   $('#msgButton').on('click', function(){
     event.preventDefault();
     if($("#msg-textbox").val() === ''){
@@ -37,7 +55,7 @@ $(document).ready(function() {
       messageInput = $("#msg-textbox").val();
       console.log(messageInput);
       $.ajax({
-        url: "http://tiny-pizza-server.herokuapp.com/collections/greenville-chats",
+        url: pizzaUrl,
         type: "POST",
         data: {
           message: messageInput,
@@ -46,21 +64,6 @@ $(document).ready(function() {
         }
       });
     }
-  });
-
-
-  $.ajax(pizzaUrl).done(function(data) {
-    _.each(data, function(info) {
-      // _.defaults(info, {
-      //   username: "",
-      //   createdAt: (new Date()).toString(),
-      //   message: ""
-      // });
-      if(info.username && info.createdAt && info.message) {
-        $userInfoOutput.append(renderChatTemplate(info));
-      }
-    console.log(info);
-    });
   });
 
 
