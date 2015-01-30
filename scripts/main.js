@@ -41,7 +41,9 @@ $(document).ready(function() {
     } else {
       var usernameInput = $(".username-input").val();
       console.log(usernameInput);
+      $('.username-filler').text(usernameInput);
       $('.msg-container').removeClass('hidden');
+      $('.msg-input-container').removeClass('hidden');
       $('.login-container').addClass('hidden');
     }
 
