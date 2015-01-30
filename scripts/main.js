@@ -45,7 +45,7 @@ $(document).ready(function() {
       });
     });
   }, 3000);
-
+  
 
   $('#msgButton').on('click', function(){
     event.preventDefault();
@@ -64,6 +64,7 @@ $(document).ready(function() {
         }
       });
     }
+    $('#msg-textbox').val('');
   });
 
 
