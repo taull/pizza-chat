@@ -6,7 +6,7 @@ console.log("hello");
 
 var usernameInput = "";
 var messageInput = "";
-var currentDateTime = "";
+var currentDateTime = "54cc031945c37503000001ef";
 
 $(document).ready(function() {
 
@@ -35,8 +35,10 @@ $(document).ready(function() {
   // var interval = setInterval(function(){
     $($userInfoOutput).empty();
     $.ajax(pizzaUrl).done(function(data) {
-      _.sortBy(data, "_id");
-      _.each(data, function(info) {
+    var sortedData = _.sortBy(data, function(dataItem){
+        return dataItem._id;
+      });
+      _.each(sortedData, function(info) {
         if(info.username && info.createdAt && info.message) {
           $userInfoOutput.append(renderChatTemplate(info));
         }
