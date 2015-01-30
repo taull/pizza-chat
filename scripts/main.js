@@ -24,27 +24,27 @@ $(document).ready(function() {
     });
   });
 
-  $.ajax({
-    url: "http://tiny-pizza-server.herokuapp.com/collections/greenville-chats",
-    type: "POST",
-    data: {
-      message: "Making bacon waffles",
-      username: "Jake",
-      createdAt: (new Date()).toString()
-    }
-  });
-
-
+  // $.ajax({
+  //   url: "http://tiny-pizza-server.herokuapp.com/collections/greenville-chats",
+  //   type: "POST",
+  //   data: {
+  //     message: "Making bacon waffles",
+  //     username: "Jake",
+  //     createdAt: (new Date()).toString()
+  //   }
+  // });
 
   $('#loginButton').on('click', function(){
     event.preventDefault();
-    $('.msg-container').removeClass('hidden');
-    $('.login-container').addClass('hidden');
-    // $(this).addClass('current');
-  });
+    if($(".username-input").val() === '') {
+      alert("Enter an username");
+    } else {
+      var usernameInput = $(".username-input").val();
+      console.log(usernameInput);
+      $('.msg-container').removeClass('hidden');
+      $('.login-container').addClass('hidden');
+    }
 
-
-
-
+    });
   });
 })();
