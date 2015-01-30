@@ -57,3 +57,27 @@ li.date {
   display:inline-block;
   width:200px;
 }
+
+.msg-input-container {
+  height:150px;
+  width:960px;
+  margin:0 auto;
+  padding:15px;
+}
+
+.username-title {
+  display:inline-block;
+  vertical-align:top;
+}
+
+.username-filler {
+  display:inline-block;
+}
+
+.msg-input {
+  display: inline-block;
+}
+
+#msg-textbox {
+  width:400px;
+}
