@@ -15,8 +15,9 @@ currentDateTime = Date.now();
 var $userInfoOutput = $('.msg-list');
 var renderChatTemplate = _.template($('.chat-items').text());
 
-  $('#loginButton').on('click', function(){
-    event.preventDefault();
+$('#loginButton').on('click', function(){
+  event.preventDefault();
+
     if($(".username-input").val() === '') {
       alert("Enter an username");
     } else {
@@ -29,22 +30,20 @@ var renderChatTemplate = _.template($('.chat-items').text());
       $('.login-container').addClass('hidden');
     }
 
+});
+
+
+$($userInfoOutput).empty();
+$.ajax(pizzaUrl).done(function(data) {
+  var sortedData = _.sortBy(data, function(dataItem){
+    return dataItem._id;
   });
-
-
-  // var interval = setInterval(function(){
-    $($userInfoOutput).empty();
-    $.ajax(pizzaUrl).done(function(data) {
-    var sortedData = _.sortBy(data, function(dataItem){
-        return dataItem._id;
-      });
-      _.each(sortedData, function(info) {
-        if(info.username && info.createdAt && info.message) {
-          $userInfoOutput.append(renderChatTemplate(info));
-        }
-      });
-    });
-  // }, 3000);
+  _.each(sortedData, function(info) {
+    if(info.username && info.createdAt && info.message) {
+      $userInfoOutput.append(renderChatTemplate(info));
+    }
+  });
+});
 
 
 function getMsg() {
@@ -60,31 +59,30 @@ function msgFilter(chatData) {
   _.each(filteredData, function(info) {
       $userInfoOutput.append(renderChatTemplate(info));
       $('.msg-container').scrollTop($('.msg-container')[0].scrollHeight);
-    }
-);
-
+  });
 }
 
-setInterval(getMsg, 5000);
+setInterval(getMsg, 3000);
 
-  $('#msgButton').on('click', function(){
-    event.preventDefault();
-    if($("#msg-textbox").val() === ''){
-      alert("Enter a message");
-    } else {
-      messageInput = $("#msg-textbox").val();
-      console.log(messageInput);
-      $.ajax({
-        url: pizzaUrl,
-        type: "POST",
-        data: {
-          message: messageInput,
-          username: usernameInput,
-          createdAt: Date.now()
-        }
-      });
-    }
-    $('#msg-textbox').val('');
-  });
-  });
+$('#msgButton').on('click', function(){
+  event.preventDefault();
+  if($("#msg-textbox").val() === ''){
+    alert("Enter a message");
+  } else {
+    messageInput = $("#msg-textbox").val();
+    console.log(messageInput);
+    $.ajax({
+      url: pizzaUrl,
+      type: "POST",
+      data: {
+        message: messageInput,
+        username: usernameInput,
+        createdAt: Date.now()
+      }
+    });
+  }
+  $('#msg-textbox').val('');
+});
+
+});
 })();
