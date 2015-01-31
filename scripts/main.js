@@ -19,7 +19,7 @@ $('#loginButton').on('click', function(){
   event.preventDefault();
 
     if($(".username-input").val() === '') {
-      alert("Enter an username");
+      alert("Please enter an username");
     } else {
       usernameInput = $(".username-input").val();
       console.log(usernameInput);
@@ -28,6 +28,7 @@ $('#loginButton').on('click', function(){
       $('.msg-container').scrollTop($('.msg-container')[0].scrollHeight);
       $('.msg-input-container').removeClass('hidden');
       $('.login-container').addClass('hidden');
+      $('.welcome').addClass('hidden');
     }
 
 });

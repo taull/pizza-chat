@@ -2,21 +2,54 @@
   box-sizing: border-box;
 }
 
-
 .login-container {
-  margin: 25px auto;
-  width: 960px;
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
 }
 
+.welcome {
+  margin-top: 250px;
+  text-align: center;
+  color: #212121;
+  font-weight: 200;
+}
 
+.username-input {
+  color: #00bcd4;
+  flex: 1;
+}
+
+#loginButton {
+  margin-left: -5px;
+  background-color: #00bcd4;
+  color: #fff;
+  font: inherit;
+  font-weight: normal;
+}
+
+.username-input,
+#loginButton {
+  border: 1px solid rgba(147, 128, 108, .25);
+  padding: .5em .75em;
+}
+
+.username-input {
+  border-right: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
 
 .msg-container {
-  margin: 25px auto;
-  border: 1px solid #000;
+  margin: 25px auto 1px;
+  border: 1px solid rgba(147, 128, 108, .25);
   padding: 15px;
   width: 960px;
   height: 400px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .hidden {
@@ -29,7 +62,7 @@
 }
 
 .msg-holder {
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #00bcd4;
   min-height: 50px;
   list-style: none;
 
@@ -50,11 +83,16 @@
 .msg {
   display: inline-block;
   width: 500px;
+  text-overflow: none;
 }
 
 .date {
-  display: inline-block;
+  display: block;
+  margin-top: -18px;
+  padding: 0;
   width: 200px;
+  color: rgba(147, 128, 108, .85);
+  font-size: 10px;
 }
 
 .msg-input-container {
@@ -65,12 +103,16 @@
 }
 
 .username-title {
-  display: inline-block;
-  vertical-align: top;
-}
+  display: block;
 
-.username-filler {
-  display: inline-block;
+  p {
+    display: inline-block;
+  }
+
+  .username-filler {
+    display: inline-block;
+  }
+
 }
 
 .msg-input {
@@ -78,5 +120,5 @@
 }
 
 #msg-textbox {
-  width: 400px;
+  width: 800px;
 }
