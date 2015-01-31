@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box; }
 
+body {
+  background-color: #f9f9f9; }
+
 .login-container {
   display: flex;
   margin-top: 30px;
