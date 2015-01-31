@@ -30,7 +30,7 @@
       <ul>
        <li class="name"><p><%= username %></p></li>
        <li class="msg"><p><%= message %></p></li>
-       <li class="date"><p><%= moment(createdAt).fromNow() %></p></li>
+       <li class="date"><p><%= moment(createdAt, 'x').fromNow() %></p></li>
       </ul>
     </li>
 
