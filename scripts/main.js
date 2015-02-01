@@ -55,7 +55,6 @@ function msgFilter(chatData) {
   var filteredData = _.filter(chatData, function(chat){
     return chat.createdAt >= currentDateTime;
   });
-  console.log(filteredData);
   currentDateTime = Date.now();
   _.each(filteredData, function(info) {
       $userInfoOutput.append(renderChatTemplate(info));
@@ -63,7 +62,15 @@ function msgFilter(chatData) {
   });
 }
 
-setInterval(getMsg, 3000);
+setInterval(getMsg, 1000);
+
+
+$('#msg-textbox').keypress(function (key) {
+  if (key.which == 13) {
+    $("#msgButton").click();
+  }
+});
+
 
 $('#msgButton').on('click', function(){
   event.preventDefault();
